@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "85629822853",
+    "project_id": "komawo-8685a",
+    "storage_bucket": "komawo-8685a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85629822853:android:aa0f9b976a057452b706ec",
+        "android_client_info": {
+          "package_name": "com.telkom.komawo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85629822853-78lkei7crh52dir94g7tj9g4egjb1drg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFrrZBqyYOFYUFgbDrTgFiwkNPKUh3P7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85629822853-78lkei7crh52dir94g7tj9g4egjb1drg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
