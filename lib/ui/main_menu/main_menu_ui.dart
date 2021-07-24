@@ -1,8 +1,9 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:komawo/ui/list_package/package_modern_ui.dart';
+import 'package:komawo/ui/list_package/package_traditional_ui.dart';
 import 'package:komawo/ui/main_menu/widgets/package_card.dart';
+import 'package:komawo/ui/profile/profile_ui.dart';
 
 class MainMenuUi extends StatefulWidget {
   const MainMenuUi({Key? key}) : super(key: key);
@@ -14,23 +15,57 @@ class MainMenuUi extends StatefulWidget {
 class _MainMenuUiState extends State<MainMenuUi> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
         appBar: AppBar(
-        title: Text('Package List'),
-    ),
-    body: SingleChildScrollView(
-      child: Center(
-        child: Column(
-          children: [
-            SizedBox(height: 10,),
-            PackageCard(title: 'Modern', imageUrl: '👗', destination: () {Navigator.push(context, CupertinoPageRoute(builder: (context) =>PackageModernUi()));},),
-            PackageCard(title: 'Modern', imageUrl: '👗', destination: () {Navigator.push(context, CupertinoPageRoute(builder: (context) =>PackageModernUi()));}),
-            PackageCard(title: 'Modern', imageUrl: '👗', destination: () {Navigator.push(context, CupertinoPageRoute(builder: (context) =>PackageModernUi()));}),
-            PackageCard(title: 'Modern', imageUrl: '👗', destination: () {Navigator.push(context, CupertinoPageRoute(builder: (context) =>PackageModernUi()));}),
-          ],
+          title: Text('Package List'),
         ),
-      ),
-    )
-    );
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                PackageCard(
+                  title: 'Modern',
+                  imageUrl: '👗',
+                  destination: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => PackageModernUi()));
+                  },
+                ),
+                PackageCard(
+                    title: 'Traditional',
+                    imageUrl: '👗',
+                    destination: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => PackageTraditionalUi()));
+                    }),
+                PackageCard(
+                    title: 'Profile',
+                    imageUrl: '👗',
+                    destination: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => ProfileUi()));
+                    }),
+                PackageCard(
+                    title: 'About Us',
+                    imageUrl: '👗',
+                    destination: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => PackageModernUi()));
+                    }),
+              ],
+            ),
+          ),
+        ));
   }
 }

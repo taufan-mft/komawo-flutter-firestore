@@ -44,7 +44,7 @@ class PackageMaker {
   ''');
 
   static PackageModel traditional1 = PackageModel(
-      imageUrl: 'assets/images/traditional1.jpeg',
+      imageUrl: 'assets/images/tradisional1.jpeg',
       title: 'Tradisional 1',
       shortDesc: 'Lorem Ipsum',
       price: 'IDR 50.000.000',
@@ -65,7 +65,7 @@ class PackageMaker {
   ''');
 
   static PackageModel traditional2 = PackageModel(
-      imageUrl: 'assets/images/traditional2.jpeg',
+      imageUrl: 'assets/images/tradisional2.jpeg',
       title: 'Tradisional 2',
       shortDesc: 'Lorem Ipsum',
       price: 'IDR 50.000.000',

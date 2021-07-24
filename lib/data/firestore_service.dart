@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:komawo/data/user_model.dart';
 
 /*
 users collection structure : ID=email
@@ -38,11 +39,26 @@ class FireStoreService {
     if (check.docs.length == 0) {
       await users.add(userData).then((value) {
         oke = value.id;
-      }
-      );
+      });
     }
-return oke;
+    return oke;
   }
 
+  Future<UserModel> getUser(String id) async {
+    var user = UserModel(name: '', gender: '', email: '', phone: '');
+    await users.doc(id).get().then((value) {
+      log(value['email']);
+      user = UserModel(
+          name: value['name'],
+          gender: value['gender'],
+          email: value['email'],
+          phone: value['phone']);
+    });
 
+    return user;
+  }
+
+  Future<void> updateUser(Map<String, dynamic> user, String id) async {
+    await users.doc(id).update(user);
+  }
 }

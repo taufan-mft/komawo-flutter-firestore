@@ -5,19 +5,14 @@ import 'package:komawo/ui/list_package/package_info.dart';
 import 'package:komawo/ui/order_now/order_now_ui.dart';
 import 'package:komawo/ui/package_detail/package_detail_ui.dart';
 
-class PackageModernUi extends StatefulWidget {
-  const PackageModernUi({Key? key}) : super(key: key);
+class PackageTraditionalUi extends StatelessWidget {
+  const PackageTraditionalUi({Key? key}) : super(key: key);
 
-  @override
-  _PackageModernUiState createState() => _PackageModernUiState();
-}
-
-class _PackageModernUiState extends State<PackageModernUi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Package Modern'),
+          title: Text('Package Traditional'),
         ),
         body: SingleChildScrollView(
           child: Center(
@@ -28,25 +23,33 @@ class _PackageModernUiState extends State<PackageModernUi> {
                 ),
                 PackageInfo(
                   price: 'IDR 500.000.000',
-                  title: 'Package Modern 1',
-                  imageUrl: 'assets/images/modern1.jpeg',
+                  title: 'Package Traditional 1',
+                  imageUrl: 'assets/images/tradisional1.jpeg',
                   destinationOrder: () => Navigator.push(
                       context,
                       CupertinoPageRoute(
                           builder: (context) =>
-                              OrderNowUi(pkg: PackageMaker.modern1))),
+                              OrderNowUi(pkg: PackageMaker.traditional1))),
                   destinationRead: () => Navigator.push(
                       context,
                       CupertinoPageRoute(
                           builder: (context) =>
-                              PackageDetailUi(pkg: PackageMaker.modern1))),
+                              PackageDetailUi(pkg: PackageMaker.traditional1))),
                 ),
                 PackageInfo(
                   price: 'IDR 500.000.000',
-                  title: 'Package Modern 2',
-                  imageUrl: 'assets/images/modern2.jpeg',
-                  destinationOrder: () => Container(),
-                  destinationRead: () => Navigator.push(context, CupertinoPageRoute(builder: (context) =>PackageDetailUi(pkg: PackageMaker.modern2))),
+                  title: 'Package Traditional 2',
+                  imageUrl: 'assets/images/tradisional2.jpeg',
+                  destinationOrder: () => Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) =>
+                              OrderNowUi(pkg: PackageMaker.traditional2))),
+                  destinationRead: () => Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) =>
+                              PackageDetailUi(pkg: PackageMaker.traditional2))),
                 )
               ],
             ),
