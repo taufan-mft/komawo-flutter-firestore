@@ -71,7 +71,7 @@ class _OrderNowUiState extends State<OrderNowUi> {
                           padding: EdgeInsets.all(8),
                           child: TextFormField(
                               onChanged: (text) {
-                                tanggal = text;
+                                widget.pkg.tanggal = text;
                               },
                               keyboardType: TextInputType.datetime,
                               enableSuggestions: false,

@@ -5,10 +5,11 @@ class UserModel {
   String phone;
   String? password;
 
-  UserModel(
-      {required this.name,
-      required this.gender,
-      required this.email,
-      required this.phone,
-      this.password});
+  UserModel({
+    required this.name,
+    required this.gender,
+    required this.email,
+    required this.phone,
+    this.password,
+  });
 }

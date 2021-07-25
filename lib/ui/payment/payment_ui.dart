@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:komawo/data/package_model.dart';
+import 'package:komawo/services/service_locator.dart';
+import 'package:komawo/ui/payment/payment_viewmodel.dart';
 
 class PaymentUi extends StatefulWidget {
   final PackageModel pkg;
@@ -13,6 +15,13 @@ class PaymentUi extends StatefulWidget {
 
 class _PaymentUiState extends State<PaymentUi> {
   String _paymentMethod = 'Ovo';
+  PaymentViewModel model = serviceLocator<PaymentViewModel>();
+
+  @override
+  void initState() {
+    super.initState();
+    model.setPackage(widget.pkg);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +46,7 @@ class _PaymentUiState extends State<PaymentUi> {
                           onChanged: (String? value) {
                             setState(() {
                               _paymentMethod = value!;
+                              model.pkg.bayar = value;
                             });
                           },
                         ),
@@ -49,6 +59,7 @@ class _PaymentUiState extends State<PaymentUi> {
                           onChanged: (String? value) {
                             setState(() {
                               _paymentMethod = value!;
+                              model.pkg.bayar = value;
                             });
                           },
                         ),
@@ -61,6 +72,7 @@ class _PaymentUiState extends State<PaymentUi> {
                           onChanged: (String? value) {
                             setState(() {
                               _paymentMethod = value!;
+                              model.pkg.bayar = value;
                             });
                           },
                         ),
@@ -78,12 +90,7 @@ class _PaymentUiState extends State<PaymentUi> {
                               primary: Colors.pinkAccent),
                           child: Text('Pay now, ${widget.pkg.price}'),
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                CupertinoPageRoute(
-                                    builder: (context) => PaymentUi(
-                                          pkg: widget.pkg,
-                                        )));
+                            model.doPayment();
                           })
                     ],
                   ))),
