@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:komawo/data/package_model.dart';
-import 'package:komawo/utils/button_style.dart';
+import 'package:komawo/ui/order_now/order_now_ui.dart';
 
 class PackageDetailUi extends StatefulWidget {
   final PackageModel pkg;
@@ -41,7 +42,7 @@ class _PackageDetailUiState extends State<PackageDetailUi> {
                             )),
                         Padding(
                           padding:
-                              EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                          EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                           child: Text(
                             widget.pkg.title,
                             style: TextStyle(
@@ -50,21 +51,21 @@ class _PackageDetailUiState extends State<PackageDetailUi> {
                         ),
                         Padding(
                           padding:
-                              EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+                          EdgeInsets.symmetric(vertical: 4, horizontal: 6),
                           child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 'Detail',
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16
                                 ),
                               )),
                         ),
                         Text('PRICE'),
                         Text(widget.pkg.price,
-                        style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: 16),
                         ),
                         Padding(
                           padding:
@@ -90,17 +91,26 @@ class _PackageDetailUiState extends State<PackageDetailUi> {
                                 textAlign: TextAlign.left,
                               )),
                         ),
-            ElevatedButton(
-              style:ElevatedButton.styleFrom(
-                minimumSize: Size(MediaQuery.of(context).size.width * 0.8, 36),
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(25.0),
-                  ),
-                primary: Colors.pinkAccent
-              ),
-              child: Text('Order Now'),
-              onPressed: () {}),
-                        SizedBox(height: 10,)
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                minimumSize: Size(
+                                    MediaQuery.of(context).size.width * 0.8,
+                                    36),
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(25.0),
+                                ),
+                                primary: Colors.pinkAccent),
+                            child: Text('Order Now'),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) =>
+                                          OrderNowUi(pkg: widget.pkg)));
+                            }),
+                        SizedBox(
+                          height: 10,
+                        )
                       ],
                     )))),
 

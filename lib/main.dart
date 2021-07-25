@@ -1,9 +1,13 @@
 import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:komawo/services/service_locator.dart';
 import 'package:komawo/ui/login/login_ui.dart';
+import 'package:komawo/ui/main_menu/main_menu_ui.dart';
+import 'package:komawo/utils/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,7 +15,6 @@ void main() async {
   setupServiceLocator();
   runApp(MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -39,8 +42,20 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   void initializeFlutterFire() async {
     try {
-      // Wait for Firebase to initialize and set `_initialized` state to true
-      await Firebase.initializeApp();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      bool? loggedIn = await prefs.getBool(KEY_LOGIN);
+
+      if (loggedIn!) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            CupertinoPageRoute(builder: (context) => MainMenuUi()),
+            ModalRoute.withName('/tania'));
+      } else {
+        Navigator.pushAndRemoveUntil(
+            context,
+            CupertinoPageRoute(builder: (context) => LoginUi()),
+            ModalRoute.withName('/tania'));
+      }
     } catch(e) {
       log(e.toString());
     }
@@ -57,11 +72,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 @override
 void initState() {
-  //  initializeFlutterFire();
+  initializeFlutterFire();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-    return LoginUi();
+    return Container();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:komawo/ui/about/about_ui.dart';
 import 'package:komawo/ui/list_package/package_modern_ui.dart';
 import 'package:komawo/ui/list_package/package_traditional_ui.dart';
 import 'package:komawo/ui/main_menu/widgets/package_card.dart';
@@ -58,10 +59,8 @@ class _MainMenuUiState extends State<MainMenuUi> {
                     title: 'About Us',
                     imageUrl: '👗',
                     destination: () {
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) => PackageModernUi()));
+                      Navigator.push(context,
+                          CupertinoPageRoute(builder: (context) => AboutUi()));
                     }),
               ],
             ),

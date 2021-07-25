@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:komawo/services/service_locator.dart';
 import 'package:komawo/ui/login/login_viewmodel.dart';
 import 'package:komawo/ui/main_menu/main_menu_ui.dart';
+import 'package:komawo/ui/register/register_ui.dart';
 import 'package:komawo/utils/button_style.dart';
 import 'package:provider/provider.dart';
 
@@ -83,22 +84,37 @@ class _LoginUiState extends State<LoginUi> {
                     child: Text('Login'),
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                       var bool =  await model.getUser(email, password);
-                       if (bool) {
-                         Navigator.push(context, CupertinoPageRoute(builder: (context) =>MainMenuUi()));
-                       }
+                        var bool = await model.getUser(email, password);
+                        if (bool) {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              CupertinoPageRoute(
+                                  builder: (context) => MainMenuUi()),
+                              ModalRoute.withName('/tania'));
+                        }
                       }
-
                     },
                   ),
                 ),
-          ChangeNotifierProvider<LoginViewModel>(
-          create: (context) => model,
-        child: Consumer<LoginViewModel>(
-          builder: (context, model, child) => Text(
-            model.id
-          )))
-          ],
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: ElevatedButton(
+                    style: MyButtonStyle.primaryButton(context, Colors.pink),
+                    child: Text('Register'),
+                    onPressed: () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => RegisterUi()),
+                          ModalRoute.withName('/'));
+                    },
+                  ),
+                ),
+                ChangeNotifierProvider<LoginViewModel>(
+                    create: (context) => model,
+                    child: Consumer<LoginViewModel>(
+                        builder: (context, model, child) => Text(model.id)))
+              ],
             )),
       ),
     );
